@@ -1,25 +1,32 @@
 import java.util.Date;
 
 public class GradStudent extends Student implements Auditable{
-  
-	private int papers;
+	
+	private int papers = 0;
 	private String gradDate;
 	
 	public GradStudent(String f, String l, int id) {
 		super(f, l, id);
 	}
-
-	public boolean meetsRequirements(int p) {
+	
+	public int getPapers () {
+		return papers;
+	}
+	
+	@Override
+	public boolean meetsRequirements() {
 		
 		if (creditsCompleted >= 30 && papers >= 2) {
 			return true;
 		}
-		else 
+		else {
 			return false;
+		}
 	}
 	
-	public void papersWritten (int papers) {
-		System.out.println(getFirstName() + " " + getLastName() + " had " + papers + " papers published");
+	public void papersPublished (int published) {
+		papers += published;
+		System.out.println(getFirstName() + " " + getLastName() + " had " + published + " papers published");
 	}
 
 	@SuppressWarnings("deprecation")
