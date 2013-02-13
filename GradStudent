@@ -1,0 +1,42 @@
+import java.util.Date;
+
+public class GradStudent extends Student implements Auditable{
+  
+	private int papers;
+	private String gradDate;
+	
+	public GradStudent(String f, String l, int id) {
+		super(f, l, id);
+	}
+
+	public boolean meetsRequirements(int p) {
+		
+		if (creditsCompleted >= 30 && papers >= 2) {
+			return true;
+		}
+		else 
+			return false;
+	}
+	
+	public void papersWritten (int papers) {
+		System.out.println(getFirstName() + " " + getLastName() + " had " + papers + " papers published");
+	}
+
+	@SuppressWarnings("deprecation")
+	public String determineGraduationDate() {
+		Date d = new Date();
+		int year = d.getYear()+1900;
+		int month = d.getMonth();
+		int gDate = 0;
+		      
+		if (month < 5) {
+		    gDate = year;  
+		}
+		else if (month>5) {
+		    gDate = year + 1;
+		}
+		
+		gradDate = ("January 1st, "+ gDate);
+		return gradDate;	
+	}
+}
