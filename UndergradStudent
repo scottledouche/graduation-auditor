@@ -1,26 +1,28 @@
 public class UndergradStudent extends Student implements Auditable{
-  
-	private int commServ;
+	
+	private int commServ = 0;
 	
 	public UndergradStudent(String f, String l, int id) {
 		super(f, l, id);
 	}
-
+	
+	public int getCommServ () {
+		return commServ;
+	}
+	
 	@Override
 	public boolean meetsRequirements() {
 
-		if (creditsCompleted >= 30 && commServ >= 20)
+		if (creditsCompleted >= 30 && commServ >= 20) {
 			return true;		
-		else 
+		}
+		else {
 			return false;	
+		}
 	}
 	
-	public void communityService (int cs) {
-		System.out.println(getFirstName() + " " + getLastName() + " completed " + commServ + " hours of community service");
+	public void communityService (int hours) {
+		commServ += hours;
+		System.out.println(getFirstName() + " " + getLastName() + " completed " + hours + " hours of community service");
 	}
-		
-	public void takeCourse (int courseCredits, String courseName, int hours){
-	    creditsCompleted += courseCredits;
-	    hours += commServ;
-	}	
 }
