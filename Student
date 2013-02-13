@@ -1,0 +1,71 @@
+
+import java.util.Date;
+
+public class Student implements Auditable {
+  
+	private String firstName;
+	private String lastName;
+	private int studentID;
+	protected int creditsCompleted;
+	private String gradDate;
+	
+	public Student (String f, String l, int id) {
+	    firstName = f;
+	    lastName = l;
+	    studentID = id;
+	}
+	    
+	public String getFirstName (){
+	    return firstName;
+	}
+	    
+	public String getLastName (){
+	    return lastName;
+	}
+	    
+	public int getStudentID (){
+	    return studentID;
+	}
+	
+	public String getGradDate () {
+		return gradDate;
+	}
+	
+	public void takeCourse (int credits, String courseName){
+	    creditsCompleted += credits;
+	    System.out.println(firstName + " " + lastName + " took " + courseName + " for "+ credits + " credits");
+	}
+	    
+	@Override
+	public boolean meetsRequirements() {
+		boolean reqs = false;
+	
+		if (creditsCompleted >= 30) {
+			reqs = true;
+		}
+		else {
+			reqs = false;
+		}
+			return reqs;
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public String determineGraduationDate() {
+			
+		Date d = new Date();
+		int year = d.getYear()+1900;
+		int month = d.getMonth();
+		int gDate = 0;
+		      
+		if (month < 5) {
+		    gDate = year;  
+		}
+		else if (month > 5) {
+		    gDate = year + 1;
+		}
+		
+	    gradDate = ("May 1st, "+ gDate);
+		return gradDate;	
+	}	
+}
