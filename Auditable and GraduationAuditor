@@ -1,0 +1,22 @@
+public interface Auditable {
+
+  boolean meetsRequirements();
+	
+	String determineGraduationDate();
+}
+
+public class GraduationAuditor {
+  
+	public static void performAudit(Auditable[] auditArray) {
+		
+		for (int i = 0; i < auditArray.length; i++) {
+			if (auditArray[i].meetsRequirements()) {
+				String gradDate = auditArray[i].determineGraduationDate();
+				System.out.println(auditArray[i].toString() + " will graduate on " + gradDate + ".");
+			} 
+			else {
+				System.out.println(auditArray[i] + " cannot graduate yet.");
+			}
+		}
+	}
+}
