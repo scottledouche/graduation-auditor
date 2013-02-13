@@ -1,33 +1,39 @@
 public class LA3Main {
+
 	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
-	     UndergradStudent[] ugs = new UndergradStudent[3];
+	     UndergradStudent[] ugs = new UndergradStudent[2];
 	     GradStudent[] gs = new GradStudent[1];
 	     GraduationAuditor ga = new GraduationAuditor();
 	     
 	     gs[0] = new GradStudent("Blanche", "Graves", 111);
-	     ugs[1] = new UndergradStudent("Mercedes", "Patton", 222);
-	     ugs[2] = new UndergradStudent("Adam", "Snyder", 333);
+	     ugs[0] = new UndergradStudent("Mercedes", "Patton", 222);
+	     ugs[1] = new UndergradStudent("Adam", "Snyder", 333);
 	     
 	     // Courses taken by Blanche Graves
 	     gs[0].takeCourse(4, "CS 1120");
 	     gs[0].takeCourse(26, "The Ultimate Course");
-	     gs[0].papersWritten(2);
+	     gs[0].papersPublished(2);
+	     System.out.println();
 	     
 	     // Courses taken by Mercedes Patton
 	     ugs[0].takeCourse(4, "CS 1110");
 	     ugs[0].takeCourse(4, "MATH 1220");
-	     ugs[0].communityService(20);
+	     ugs[0].communityService(25);
+	     System.out.println();
 	     
 	     // Courses taken by Adam Snyder
 	     ugs[1].takeCourse(4, "CS 1110");
 	     ugs[1].takeCourse(4, "CS 1120");
 	     ugs[1].takeCourse(4, "MATH 1220");
 	     ugs[1].takeCourse(4, "MATH 1230");
-	     ugs[1].takeCourse(14, "The Ultimate Course");
-	     ugs[1].communityService(20);
-
-	     //ga.performAudit(gs);
+	     ugs[1].takeCourse(26, "The Ultimate Course");
+	     ugs[1].communityService(10);
+	     ugs[1].communityService(15);
+	     System.out.println();
+	     
+	     ga.performAudit(gs);
 	     ga.performAudit(ugs);
 	}
+
 }
